@@ -2,11 +2,12 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
+const app = express();
+
+const PORT = process.env.PORT;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const app = express();
-const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, "dist")));
 
@@ -15,5 +16,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server started on port " + PORT);
 });
